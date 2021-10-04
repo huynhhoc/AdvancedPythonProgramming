@@ -1,13 +1,23 @@
-from flask import Flask
-from flask import render_template
-from datetime import datetime
 import re
+from datetime import datetime
 
-app = Flask(__name__)
+from flask import Flask, render_template
 
+from . import app
+
+# Replace the existing home function with the one below
 @app.route("/")
 def home():
-    return "Hello, Flask!"
+    return render_template("home.html")
+
+# New functions
+@app.route("/about/")
+def about():
+    return render_template("about.html")
+
+@app.route("/contact/")
+def contact():
+    return render_template("contact.html")
 
 @app.route("/api/data")
 def get_data():
@@ -31,8 +41,13 @@ def hello_there(name):
     return content
 @app.route("/bonjour/<name>")
 def bonjour_there(name = None):
-        return render_template(
-        "hello_there.html",
-        name=name,
-        date=datetime.now()
+    match_object = re.match("[a-zA-Z]+", name)
+    if match_object:
+        clean_name = match_object.group(0)
+    else:
+        clean_name = "Friend"
+    return render_template(
+    "hello_there.html",
+    name=clean_name,
+    date=datetime.now()
     )
