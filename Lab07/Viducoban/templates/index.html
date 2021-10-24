@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script type = "text/javascript" 
+        src = "{{ url_for('static', filename = 'hello.js') }}" ></script>
+</head>
+<body>
+    <span class="message"> Xin chao </span>
+    <input type = "button" onclick = "sayHello()" value = "Say Hello" />
+</body>
+</html>
