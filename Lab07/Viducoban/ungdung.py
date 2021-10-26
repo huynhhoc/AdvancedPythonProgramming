@@ -17,7 +17,7 @@ def dinhtuyen():
 
 @ungdung.route('/login')
 def login():
-  abort (401)
+  abort (401)clear_session_cookies()
 
 #Bai 12
 # https://pythonbasics.org/flask-http-methods/
@@ -60,3 +60,5 @@ def page_not_found(error):
 if __name__ == "__main__":
   ungdung.config['SECRET_KEY'] = 'A0Zr98j/3yX R~XHH!jmN]LWX/ ,?RT'
   ungdung.run(port = 5050)
+  #from waitress import serve
+  #serve(ungdung, port=5050)
