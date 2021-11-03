@@ -17,7 +17,7 @@ def dinhtuyen():
 
 @ungdung.route('/login')
 def login():
-  abort (401)clear_session_cookies()
+  abort (401)
 
 #Bai 12
 # https://pythonbasics.org/flask-http-methods/
