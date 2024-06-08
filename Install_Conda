@@ -1,0 +1,35 @@
+Step 0: install wget
+sudo apt-get update
+sudo apt-get install wget
+
+Step 1: install conda
+
+wget https://repo.anaconda.com/archive/Anaconda3-2023.03-Linux-x86_64.sh
+
+Step 2: Verify the Installer (Optional)
+sudo apt-get install coreutils
+sha256sum Anaconda3-2023.03-Linux-x86_64.sh
+
+Step 3: Run the Installer
+chmod +x Anaconda3-2023.03-Linux-x86_64.sh
+
+./Anaconda3-2023.03-Linux-x86_64.sh
+
+Step 4: Initialize Conda
+Run the following command to initialize Conda for your shell:
+~/anaconda3/bin/conda init
+To activate the changes, close and reopen your terminal or source the startup script:
+source ~/.bashrc
+
+Step 5: Verify the Installation
+
+conda --version
+
+
+Step 6: Create a Conda Environment
+  conda create --name myenv python=3.9
+  conda activate myenv
+
+Step 7: Install packages, for example:
+conda install numpy
+conda install numpy pandas matplotlib
