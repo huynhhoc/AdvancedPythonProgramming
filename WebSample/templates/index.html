@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main Page</title>
+</head>
+<body>
+    <h1>Main Page</h1>
+    <form action="{{ url_for('details') }}" method="post">
+        <table border="1">
+            <tr>
+                <th>Select</th>
+                <th>MSSV</th>
+                <th>Ho Ten</th>
+            </tr>
+            {% for row in data %}
+            <tr>
+                <td><input type="checkbox" name="selected" value="{{ row[0] }}"></td>
+                <td>{{ row[0] }}</td>
+                <td>{{ row[1] }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+        <button type="submit">Go to Details</button>
+    </form>
+</body>
+</html>
