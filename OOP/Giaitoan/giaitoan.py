@@ -7,6 +7,9 @@ from mathematic import Mathematic
 mathematic = Mathematic()
 
 def perform_operation(operation):
+    global a
+    global b
+    global ketqua
     try:
         a_val = float(a.get())
         b_val = float(b.get())
@@ -15,10 +18,15 @@ def perform_operation(operation):
     except ValueError as ve:
         ketqua.set("Error: " + str(ve))
 
-def open_giaitoan_form():
-    win = tk.Toplevel()
+def main_form():
+    win = tk.Tk()
     win.title("Example")
-
+    return win
+def open_giaitoan_form(win):
+    global a
+    global b
+    global ketqua
+    
     tabControl = ttk.Notebook(win)
     tab1 = ttk.Frame(tabControl)
     tabControl.add(tab1, text="Nhom 1")
@@ -35,31 +43,28 @@ def open_giaitoan_form():
     ttk.Label(frame, text="He so b: ").grid(column=0, row=1, padx=5, pady=5)
 
     # Entry
-    global a
+    
     a = tk.StringVar()
     texta = ttk.Entry(frame, textvariable=a)
     texta.grid(column=1, row=0)
 
     # Entry b
-    global b
     b = tk.StringVar()
     textb = ttk.Entry(frame, textvariable=b)
     textb.grid(column=1, row=1)
 
     fraction = tk.LabelFrame(tab1, text="Phep toan")
     fraction.grid(column=2, row=0, padx=10, pady=10)
-    cong = ttk.Button(fraction, text="+", command=lambda: perform_operation('add'))
-    cong.grid(column=0, row=0, padx=5, pady=5)
-
+    cong = ttk.Button(fraction, text="+", command= lambda: perform_operation('add'))
     tru = ttk.Button(fraction, text="-", command=lambda: perform_operation('subtract'))
+    cong.grid(column=0, row=0, padx=5, pady=5)
     tru.grid(column=0, row=1, padx=5, pady=5)
     
-    global ketqua
     ketqua = tk.StringVar()
     ketqua_lb = ttk.Label(tab1, textvariable=ketqua)
     ketqua_lb.grid(column=0, row=3)
 
-    win.mainloop()
-
 if __name__ == '__main__':
-    open_giaitoan_form()
+    win = main_form()
+    open_giaitoan_form(win)
+    win.mainloop()

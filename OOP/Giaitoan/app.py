@@ -2,7 +2,7 @@
 
 import tkinter as tk
 from tkinter import Menu
-from giaitoan import open_giaitoan_form
+from giaitoan import open_giaitoan_form, main_form
 
 if __name__ == '__main__':
     win = tk.Tk()
@@ -17,6 +17,6 @@ if __name__ == '__main__':
     menu_bar.add_cascade(label="File", menu=file_menu)
 
     # Add "Giai toan" option to File menu
-    file_menu.add_command(label="Giai toan", command=open_giaitoan_form)
+    file_menu.add_command(label="Giai toan", command= lambda : open_giaitoan_form(win))
 
     win.mainloop()
